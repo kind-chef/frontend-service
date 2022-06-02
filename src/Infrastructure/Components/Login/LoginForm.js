@@ -3,25 +3,21 @@ import { Box } from "@mui/system";
 import { useRef } from "react";
 import Login from "../../../Application/Login";
 import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   let loginInput = useRef();
   let secretInput = useRef();
-
+  const navigate = useNavigate();
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(
-      "submit email: ",
-      loginInput.current.value,
-      secretInput.current.value
-    );
     const useCase = new Login();
     const result = await useCase.execute(
       loginInput.current.value,
       secretInput.current.value
     );
-    console.log("this is the result ", result);
     clearform();
+    if (result) navigate("/workshops");
   };
 
   const clearform = () => {
@@ -44,7 +40,12 @@ export default function LoginForm() {
           <CardContent>
             <form onSubmit={submitHandler}>
               <Box width={350} className="login-form__email-input">
-                <TextField fullWidth label="Email" id="email"></TextField>
+                <TextField
+                  fullWidth
+                  label="Email"
+                  id="email"
+                  inputRef={loginInput}
+                ></TextField>
               </Box>
               <Box width={350} className="login-form__email-input">
                 <TextField
@@ -52,6 +53,7 @@ export default function LoginForm() {
                   label="Password"
                   id="secret"
                   type="password"
+                  inputRef={secretInput}
                 ></TextField>
               </Box>
               <Grid container justify="space-between" xs={12}>
@@ -59,7 +61,9 @@ export default function LoginForm() {
                   <Button variant="text">Register</Button>
                 </Grid>
                 <Grid item xs={6}>
-                  <Button variant="contained">Login</Button>
+                  <Button variant="contained" type="submit">
+                    Login
+                  </Button>
                 </Grid>
               </Grid>
             </form>

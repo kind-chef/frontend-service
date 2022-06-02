@@ -1,15 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class LoginService {
-    loginDetails = {}
+  loginDetails = {};
 
-    constructor(email, secret) {
-        this.loginDetails.email = email;
-        this.loginDetails.secret = require('js-sha256').sha256((secret));
-    }
+  constructor(email, secret) {
+    this.loginDetails.email = email;
+    this.loginDetails.secret = require("js-sha256").sha256(secret);
+  }
 
-    async login() {
-        const result = await axios.post("/login", this.loginDetails);
-        return await result.data
-    }
+  async login() {
+    const result = await axios.post(
+      "https://localhost:8090/login",
+      this.loginDetails
+    );
+    return await result.data;
+  }
 }
