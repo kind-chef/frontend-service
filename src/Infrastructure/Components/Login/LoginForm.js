@@ -1,6 +1,8 @@
 import { Button, Card, CardContent, Grid, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import { useRef } from "react";
 import Login from "../../../Application/Login";
+import "./LoginForm.css";
 
 export default function LoginForm() {
   let loginInput = useRef();
@@ -35,29 +37,26 @@ export default function LoginForm() {
       spacing={0}
       alignItems="center"
       style={{ marginTop: "60px", minHeight: "100vh" }}
+      xs={12}
     >
-      <Grid item style={{ textAlign: "center" }} xs={3}>
+      <Grid item style={{ textAlign: "center" }}>
         <Card>
           <CardContent>
             <form onSubmit={submitHandler}>
-              <TextField
-                fullWidth
-                label="Email"
-                id="email"
-                style={{ marginTop: "20px", marginBottom: "20px" }}
-              ></TextField>
-              <TextField
-                fullWidth
-                label="Password"
-                id="secret"
-                type="password"
-                style={{ marginBottom: "20px" }}
-              ></TextField>
+              <Box width={350} className="login-form__email-input">
+                <TextField fullWidth label="Email" id="email"></TextField>
+              </Box>
+              <Box width={350} className="login-form__email-input">
+                <TextField
+                  fullWidth
+                  label="Password"
+                  id="secret"
+                  type="password"
+                ></TextField>
+              </Box>
               <Grid container justify="space-between" xs={12}>
                 <Grid item xs={6}>
-                  <Button variant="text" style={{ align: "left" }}>
-                    Register
-                  </Button>
+                  <Button variant="text">Register</Button>
                 </Grid>
                 <Grid item xs={6}>
                   <Button variant="contained">Login</Button>
