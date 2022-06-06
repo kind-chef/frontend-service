@@ -6,9 +6,23 @@ import { Button, Grid, TextField, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import ApproveKitchen from "../../Application/ApproveKitchen";
 import { useNavigate } from "react-router-dom";
+import CarouselKf from "../Components/UI/CarouselKf";
 
 export default function KitchenDetail() {
   const [kitchenDetail, setKitchenDetail] = useState({});
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
   const params = useParams();
   const navigate = useNavigate();
 
@@ -27,17 +41,42 @@ export default function KitchenDetail() {
     if (!result) console.error("not able to approve");
     navigate("/kitchens");
   };
+
   return (
     <>
       <h1>This is the KitchenDetail Page : {kitchenDetail.name}</h1>
-      <Grid container style={{ marginTop: "60px", minHeight: "100vh" }}>
+      <Grid
+        container
+        style={{ marginTop: "60px", minHeight: "100vh" }}
+        spacing={10}
+      >
         <Grid item xs={1}></Grid>
-        <Grid item xs={5}></Grid>
-        <Grid item xs={5}>
+        <Grid item xs={width <= 768 ? 10 : 5}>
+          <CarouselKf items={kitchenDetail.images}></CarouselKf>
+        </Grid>
+        <Grid item xs={width <= 768 ? 10 : 5}>
           <DetailSection title="Details">
             <TextField
               label="Name"
               defaultValue={kitchenDetail.name}
+              InputProps={{
+                readOnly: true,
+              }}
+              style={{ marginBottom: "10px", marginRight: "20px" }}
+              variant="standard"
+            ></TextField>
+            <TextField
+              label="Email"
+              defaultValue={kitchenDetail.email}
+              InputProps={{
+                readOnly: true,
+              }}
+              style={{ marginBottom: "10px", marginRight: "20px" }}
+              variant="standard"
+            ></TextField>
+            <TextField
+              label="Phone Number"
+              defaultValue={kitchenDetail.phoneNumber}
               InputProps={{
                 readOnly: true,
               }}
@@ -96,7 +135,6 @@ export default function KitchenDetail() {
             <Button
               variant="contained"
               endIcon={<SendIcon />}
-              style={{ margin: "30px" }}
               onClick={approveHandler}
             >
               Approve

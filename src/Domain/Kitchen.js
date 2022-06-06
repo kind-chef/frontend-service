@@ -6,13 +6,30 @@ export default class Kitchen {
   name;
   capacity;
   postalCode;
-  constructor(id, name, street, city, province, postalCode, capacity) {
+  images;
+  email;
+  phoneNumber;
+  constructor(
+    id,
+    name,
+    email,
+    phoneNumber,
+    street,
+    city,
+    province,
+    postalCode,
+    capacity,
+    images
+  ) {
     this.id = id;
     this.name = name;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
     this.city = city;
     this.street = street;
     this.province = province;
     this.postalCode = postalCode;
     this.capacity = capacity;
+    this.images = images;
   }
 }
