@@ -3,7 +3,11 @@ import Layout from "../Components/UI/Layout";
 import { useState } from "react";
 import ImageInput from "../Components/UI/ImageInput";
 import RegisterKitchenUseCase from "../../Application/RegisterKitchen";
+import { useNavigate } from "react-router-dom";
+
 export default function RegisterKitchen() {
+  const navigate = useNavigate();
+
   const emptyKitchen = {
     name: "",
     email: "",
@@ -14,7 +18,6 @@ export default function RegisterKitchen() {
     city: "",
     province: "",
     images: [],
-    imageNames: [],
   };
 
   const [kitchen, setKitchen] = useState(emptyKitchen);
@@ -24,25 +27,21 @@ export default function RegisterKitchen() {
     console.log(kitchen);
     const useCase = new RegisterKitchenUseCase();
     const result = await useCase.execute(kitchen);
-    if (result) console.log("all good ! ");
+    if (result) navigate("/kitchens");
   };
 
   const clearFormHandler = () => setKitchen(emptyKitchen);
 
   const imageInjectorHandler = (file) => {
     let reader = new FileReader();
-
-    setKitchen((kitchen) => ({
-      ...kitchen,
-      imageNames: [...kitchen.imageNames, file.name],
-    }));
-
     reader.onload = (e) => {
       setKitchen((kitchen) => {
         return {
           ...kitchen,
-          images: [...kitchen.images, e.target.result],
-          imageNames: [...kitchen.imageNames, e.target.name],
+          images: [
+            ...kitchen.images,
+            { name: file.name, content: e.target.result },
+          ],
         };
       });
     };
@@ -168,8 +167,8 @@ export default function RegisterKitchen() {
             ></TextField>
           </Grid>
           <Grid item xs={6}>
-            {kitchen.imageNames.map((name) => (
-              <p>{name}</p>
+            {kitchen.images.map((image) => (
+              <p>{image.name}</p>
             ))}
             <ImageInput onImageAdded={imageInjectorHandler}></ImageInput>
           </Grid>

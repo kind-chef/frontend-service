@@ -17,7 +17,7 @@ export default function LoginForm() {
       secretInput.current.value
     );
     clearform();
-    if (result) navigate("/Kitchens");
+    if (result) navigate("/kitchens");
   };
 
   const clearform = () => {

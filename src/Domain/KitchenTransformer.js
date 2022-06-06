@@ -11,11 +11,11 @@ export function transformKitchen(item) {
     item.id.value,
     item.name.value,
     item.email.value,
-    item.phoneNumber.value,
-    item.street.value,
-    item.city.value,
-    item.province.value,
-    item.postCode.value,
+    item.phoneNumber?.value,
+    item.address.street.value,
+    item.address.city.value,
+    item.address.province.value,
+    item.address.postalCode.value,
     item.capacity.value,
     item.images.value
   );
