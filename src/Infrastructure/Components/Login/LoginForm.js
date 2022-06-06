@@ -17,7 +17,7 @@ export default function LoginForm() {
       secretInput.current.value
     );
     clearform();
-    if (result) navigate("/workshops");
+    if (result) navigate("/Kitchens");
   };
 
   const clearform = () => {
@@ -39,7 +39,7 @@ export default function LoginForm() {
         <Card>
           <CardContent>
             <form onSubmit={submitHandler}>
-              <Box width={350} className="login-form__email-input">
+              <Box width={300} className="login-form__email-input">
                 <TextField
                   fullWidth
                   label="Email"
@@ -47,7 +47,7 @@ export default function LoginForm() {
                   inputRef={loginInput}
                 ></TextField>
               </Box>
-              <Box width={350} className="login-form__email-input">
+              <Box width={300} className="login-form__email-input">
                 <TextField
                   fullWidth
                   label="Password"
