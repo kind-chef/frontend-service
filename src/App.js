@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./Infrastructure/Pages/Login";
 import KitchenDetail from "./Infrastructure/Pages/KitchenDetail";
 import Kitchens from "./Infrastructure/Pages/Kitchens";
-import KitchenForm from "./Infrastructure/Pages/KitchenForm";
 
 function App() {
   return (
@@ -13,10 +12,6 @@ function App() {
         <Route
           path="/kitchens/:kitchenId"
           element={<KitchenDetail></KitchenDetail>}
-        ></Route>
-        <Route
-          path="/register-kitchen"
-          element={<KitchenForm></KitchenForm>}
         ></Route>
       </Routes>
     </>
