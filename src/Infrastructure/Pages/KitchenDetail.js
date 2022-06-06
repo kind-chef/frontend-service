@@ -6,6 +6,7 @@ import { Button, Grid, TextField, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import ApproveKitchen from "../../Application/ApproveKitchen";
 import { useNavigate } from "react-router-dom";
+import CarouselKf from "../Components/UI/CarouselKf";
 
 export default function KitchenDetail() {
   const [kitchenDetail, setKitchenDetail] = useState({});
@@ -50,7 +51,9 @@ export default function KitchenDetail() {
         spacing={10}
       >
         <Grid item xs={1}></Grid>
-        <Grid item xs={width <= 768 ? 10 : 5}></Grid>
+        <Grid item xs={width <= 768 ? 10 : 5}>
+          <CarouselKf items={kitchenDetail.images}></CarouselKf>
+        </Grid>
         <Grid item xs={width <= 768 ? 10 : 5}>
           <DetailSection title="Details">
             <TextField
