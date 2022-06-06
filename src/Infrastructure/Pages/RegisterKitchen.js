@@ -2,11 +2,12 @@ import { Grid, TextField, Stack, Button } from "@mui/material";
 import Layout from "../Components/UI/Layout";
 import { useState } from "react";
 import ImageInput from "../Components/UI/ImageInput";
+import RegisterKitchenUseCase from "../../Application/RegisterKitchen";
 export default function RegisterKitchen() {
   const emptyKitchen = {
     name: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     capacity: "",
     street: "",
     postalCode: "",
@@ -18,9 +19,12 @@ export default function RegisterKitchen() {
 
   const [kitchen, setKitchen] = useState(emptyKitchen);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     console.log(kitchen);
+    const useCase = new RegisterKitchenUseCase();
+    const result = await useCase.execute(kitchen);
+    if (result) console.log("all good ! ");
   };
 
   const clearFormHandler = () => setKitchen(emptyKitchen);
@@ -83,12 +87,12 @@ export default function RegisterKitchen() {
             <TextField
               fullWidth
               label="Phone"
-              value={kitchen.phone}
+              value={kitchen.phoneNumber}
               variant="standard"
               onChange={(event) => {
                 setKitchen((kitchen) => ({
                   ...kitchen,
-                  phone: event.target.value,
+                  phoneNumber: event.target.value,
                 }));
               }}
             ></TextField>
