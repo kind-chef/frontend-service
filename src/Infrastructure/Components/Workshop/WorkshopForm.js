@@ -2,7 +2,7 @@ import { Grid, TextField, Stack, Button } from "@mui/material";
 import { useState } from "react";
 import Keywords from "./Keywords";
 import ImageInput from "../UI/ImageInput";
-
+import RegisterWorkshop from "../../../Application/RegisterWorkshop";
 export default function WorkshopForm() {
   const emptyWorkshop = {
     name: "",
@@ -62,6 +62,10 @@ export default function WorkshopForm() {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(workshop);
+    const useCase = new RegisterWorkshop();
+    const result = useCase.execute(workshop);
+    if (!result) console.error(result);
+    clearFormHandler();
   };
 
   return (
