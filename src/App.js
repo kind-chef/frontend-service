@@ -3,6 +3,7 @@ import Login from "./Infrastructure/Pages/Login";
 import KitchenDetail from "./Infrastructure/Pages/KitchenDetail";
 import Kitchens from "./Infrastructure/Pages/Kitchens";
 import RegisterKitchen from "./Infrastructure/Pages/RegisterKitchen";
+import RegisterWorkshop from "./Infrastructure/Pages/RegisterWorkshop";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
           path="/register-kitchen"
           element={<RegisterKitchen></RegisterKitchen>}
         ></Route>
+        <Route
+          path="/register-workshop"
+          element={<RegisterWorkshop></RegisterWorkshop>}
+        />
       </Routes>
     </>
   );
