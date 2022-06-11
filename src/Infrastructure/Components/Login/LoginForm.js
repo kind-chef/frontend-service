@@ -17,7 +17,7 @@ export default function LoginForm() {
       secretInput.current.value
     );
     clearform();
-    if (result) navigate("/Kitchens");
+    if (result) navigate("/kitchens");
   };
 
   const clearform = () => {
@@ -56,7 +56,7 @@ export default function LoginForm() {
                   inputRef={secretInput}
                 ></TextField>
               </Box>
-              <Grid container justify="space-between" xs={12}>
+              <Grid container justify="space-between">
                 <Grid item xs={6}>
                   <Button variant="text">Register</Button>
                 </Grid>
