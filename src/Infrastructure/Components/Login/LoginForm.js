@@ -16,6 +16,8 @@ export default function LoginForm() {
       loginInput.current.value,
       secretInput.current.value
     );
+    localStorage.setItem("userInfo", JSON.stringify(result));
+
     clearform();
     if (result) navigate("/kitchens");
   };
