@@ -17,11 +17,11 @@ export default function WorkshopDetail(props) {
 
   if (!workshop.name) return <p>loading data</p>;
   return (
-    <Grid container>
-      <Grid xs={6}>
+    <Grid container spacing={5}>
+      <Grid item xs={6}>
         <CarouselKf items={workshop.images} />
       </Grid>
-      <Grid xs={6}>
+      <Grid item xs={6}>
         <WorkshopDetailSection workshop={workshop} />
       </Grid>
     </Grid>
