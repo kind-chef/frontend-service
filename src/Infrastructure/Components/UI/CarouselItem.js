@@ -4,11 +4,7 @@ export default function CarouselItem(props) {
   return (
     <>
       <CarouselSlide key={props.item}>
-        <img
-          src={props.item}
-          alt={props.item}
-          style={{ maxWitdth: "500px", height: "500px" }}
-        />
+        <img src={props.item} alt={props.item} style={{ height: "500px" }} />
       </CarouselSlide>
     </>
   );

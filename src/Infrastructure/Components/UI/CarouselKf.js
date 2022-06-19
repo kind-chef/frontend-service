@@ -3,7 +3,7 @@ import CarouselItem from "./CarouselItem";
 
 export default function CarouselKf(props) {
   return (
-    <Carousel>
+    <Carousel height={500}>
       {props.items.map((item, i) => (
         <CarouselItem key={i} item={item} />
       ))}

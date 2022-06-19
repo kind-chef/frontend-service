@@ -4,6 +4,8 @@ import KitchenDetail from "./Infrastructure/Pages/KitchenDetail";
 import Kitchens from "./Infrastructure/Pages/Kitchens";
 import RegisterKitchen from "./Infrastructure/Pages/RegisterKitchen";
 import RegisterWorkshop from "./Infrastructure/Pages/RegisterWorkshop";
+import UnassignedWorkshops from "./Infrastructure/Pages/UnassignedWorkshops";
+import WorkshopDetail from "./Infrastructure/Pages/WorkshopDetail";
 
 function App() {
   return (
@@ -23,6 +25,14 @@ function App() {
           path="/register-workshop"
           element={<RegisterWorkshop></RegisterWorkshop>}
         />
+        <Route
+          path="/unassigned-workshops"
+          element={<UnassignedWorkshops></UnassignedWorkshops>}
+        ></Route>
+        <Route
+          path="/unassigned-workshop/:workshopId"
+          element={<WorkshopDetail></WorkshopDetail>}
+        ></Route>
       </Routes>
     </>
   );
