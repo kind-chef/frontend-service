@@ -6,7 +6,7 @@ export default function WorkshopList(props) {
       {props.workshops.map((workshop) => (
         <Workshop
           workshop={workshop}
-          url={`/unassigned-workshop/${workshop._id}`}
+          url={`/workshop/${workshop._id}`}
         />
       ))}
     </>
