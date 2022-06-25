@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function Workshop(props) {
   const navigate = useNavigate();
   const detailButtonHandler = () => {
-    navigate(`/unassigned-workshop/${props.workshop._id}`);
+    navigate(props.url);
   };
   const displayableDescription =
     props.workshop.description.length > 200

@@ -1,8 +1,23 @@
 import DetailSection from "../UI/DetailSection";
-import { TextField } from "@mui/material";
 import DetailField from "../UI/DetailField";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import AssignWorkshop from "../../../Application/AssignWorkshop";
+import { useNavigate } from "react-router-dom";
+
 export default function WorkshopDetailSection(props) {
   const workshop = props.workshop;
+  const navigate = useNavigate();
+  const assignHandler = async () => {
+    const loggedInUser = JSON.parse(localStorage.getItem("userInfo"));
+    if (!loggedInUser) return;
+    const useCase = new AssignWorkshop();
+    await useCase.execute({
+      workshopId: workshop._id,
+      userId: loggedInUser._id,
+    });
+    navigate("/unassigned-workshops");
+  };
   return (
     <>
       <DetailSection title="Details">
@@ -24,6 +39,13 @@ export default function WorkshopDetailSection(props) {
         <DetailField label="Postal Code" value={workshop.postalCode} />
         <DetailField label="Povince" value={workshop.province} />
       </DetailSection>
+      <Button
+        variant="contained"
+        endIcon={<SendIcon />}
+        onClick={assignHandler}
+      >
+        Assign
+      </Button>
     </>
   );
 }
