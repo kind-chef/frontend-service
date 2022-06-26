@@ -8,6 +8,8 @@ import UnassignedWorkshops from "./Infrastructure/Pages/UnassignedWorkshops";
 import WorkshopDetail from "./Infrastructure/Pages/WorkshopDetail";
 import Workshops from "./Infrastructure/Pages/Workshops";
 import ActiveWorkshopDetail from "./Infrastructure/Pages/ActiveWorkshopDetail";
+import AssignedWorkshops from "./Infrastructure/Pages/AssignedWorkshops";
+import AssignedWorkshopDetail from "./Infrastructure/Pages/AssignedWorkshopDetail";
 function App() {
   return (
     <>
@@ -38,6 +40,14 @@ function App() {
         <Route
           path="/workshop/:workshopId"
           element={<ActiveWorkshopDetail></ActiveWorkshopDetail>}
+        ></Route>
+        <Route
+          path="/assigned-worshops"
+          element={<AssignedWorkshops />}
+        ></Route>
+        <Route
+          path="/assigned-worshop/:workshopId"
+          element={<AssignedWorkshopDetail />}
         ></Route>
       </Routes>
     </>
