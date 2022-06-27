@@ -10,7 +10,7 @@ export default class LoginService {
 
   async login() {
     const result = await axios.post(
-      "https://localhost:8090/login",
+      "http://localhost:8090/login",
       this.loginDetails
     );
     return await result.data;

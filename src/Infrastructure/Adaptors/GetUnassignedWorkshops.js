@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default async function GetUnassignedWorkshops() {
-  return axios.get("https://localhost:8090/unassigned-workshops");
+  return axios.get("http://localhost:8090/unassigned-workshops");
 }
