@@ -9,7 +9,6 @@ export default function AssignedWorkshops() {
   const retrieveWorkshops = useCallback(async () => {
     const userDetail = getUserInfo();
     const result = await new GetAssignedWorkshops().execute(userDetail._id);
-    console.log(result);
     setWorkshops(result.data);
   }, [setWorkshops]);
 
