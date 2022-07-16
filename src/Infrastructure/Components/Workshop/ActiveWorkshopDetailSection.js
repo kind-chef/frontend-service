@@ -64,13 +64,15 @@ export default function ActiveWorkshopDetailSection(props) {
         <DetailField label="Street" value={workshop.street} />
         <DetailField label="City" value={workshop.city} />
       </DetailSection>
-      <Button
-        variant="contained"
-        endIcon={<PurchaseIcon />}
-        onClick={displayModal}
-      >
-        Purchase
-      </Button>
+      {props.hideAction && (
+        <Button
+          variant="contained"
+          endIcon={<PurchaseIcon />}
+          onClick={displayModal}
+        >
+          Purchase
+        </Button>
+      )}
       <Modal
         open={open}
         onClose={handleClose}

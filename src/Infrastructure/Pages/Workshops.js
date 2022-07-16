@@ -7,7 +7,6 @@ export default function Workshops() {
 
   const retrieveWorkshops = useCallback(async () => {
     const result = await new GetActiveWorkshops().execute();
-    console.log(result);
     setWorkshops(result.data);
   }, [setWorkshops]);
 
