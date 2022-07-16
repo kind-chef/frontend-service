@@ -1,6 +1,6 @@
 import GetUnapprovedKitchens from "../../Application/GetUnapprovedKitchens";
 import KitchenList from "../Components/Kitchen/KitchenList";
-import { Grid } from "@mui/material";
+import Layout from "../Components/UI/Layout";
 import { useEffect, useCallback, useState } from "react";
 export default function Kitchens() {
   const [Kitchens, setKitchens] = useState([]);
@@ -14,14 +14,8 @@ export default function Kitchens() {
   }, [retrieveKitchens]);
 
   return (
-    <>
-      <Grid container>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={10}>
-          {Kitchens && <KitchenList Kitchens={Kitchens}></KitchenList>}
-        </Grid>
-        <Grid item xs={1}></Grid>
-      </Grid>
-    </>
+    <Layout>
+      {Kitchens && <KitchenList Kitchens={Kitchens}></KitchenList>}
+    </Layout>
   );
 }
